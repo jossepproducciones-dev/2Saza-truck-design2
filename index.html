@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAZA TRUCK DESIGN | Skins e Información para Simuladores de Camiones</title>
+<meta name="theme-color" content="#0a0a0a">
+<style>
+:root{
+  --black: #0a0a0a; --dark: #101010; --panel: #161616; --line: rgba(255,255,255,.09);
+  --white: #ffffff; --muted: #a9a9a9; --green: #33d16f; --green-dark: #25a857;
+  --green-soft: rgba(51,209,111,.12); --green-glow: rgba(51,209,111,.35);
+  --radius: 18px; --max: 1180px; --shadow: 0 18px 40px rgba(0,0,0,.55);
+}
+*{ margin:0; padding:0; box-sizing:border-box; }
+html{ scroll-behavior:smooth; scroll-padding-top:95px; }
+body{ background:var(--black); color:var(--white); font-family:"Segoe UI", Roboto, sans-serif; line-height:1.65; overflow-x:hidden; }
+img{ max-width:100%; display:block; }
+a{ text-decoration:none; color:inherit; }
+ul{ list-style:none; }
+
+.container{ width:100%; max-width:var(--max); margin:0 auto; padding:0 22px; }
+.section{ padding:90px 0; position:relative; }
+.section--alt{ background:var(--dark); }
+.sec-head{ max-width:760px; margin:0 auto 55px; text-align:center; }
+.tag{ display:inline-block; font-size:.72rem; letter-spacing:.22em; text-transform:uppercase; font-weight:700; color:var(--green); background:var(--green-soft); border:1px solid rgba(51,209,111,.32); padding:7px 16px; border-radius:999px; margin-bottom:18px; }
+.sec-head h2{ font-size:clamp(1.7rem, 4vw, 2.6rem); line-height:1.2; margin-bottom:16px; letter-spacing:-.5px; }
+.sec-head h2 span{ color:var(--green); }
+.lead{ color:var(--muted); font-size:1.02rem; }
+.sec-head h2::after{ content:""; display:block; width:70px; height:4px; border-radius:4px; background:var(--green); margin:20px auto 0; }
+
+.btn{ display:inline-flex; align-items:center; justify-content:center; gap:9px; padding:14px 28px; border-radius:999px; font-weight:700; font-size:.94rem; border:2px solid transparent; cursor:pointer; transition:all .22s ease; }
+.btn:hover{ transform:translateY(-3px); }
+.btn--primary{ background:var(--green); color:#04150a; box-shadow:0 10px 26px var(--green-glow); }
+.btn--primary:hover{ background:#4ae585; }
+.btn--ghost{ background:transparent; color:var(--white); border-color:rgba(255,255,255,.25); }
+.btn--ghost:hover{ border-color:var(--green); color:var(--green); background:var(--green-soft); }
+.btn--wa{ background:var(--green); color:#04150a; }
+.btn--wa:hover{ background:#4ae585; }
+.btn--block{ width:100%; }
+
+.header{ position:sticky; top:0; z-index:1000; background:rgba(10,10,10,.86); backdrop-filter:blur(14px); border-bottom:1px solid var(--line); }
+.nav-wrap{ max-width:var(--max); margin:0 auto; padding:12px 22px; display:flex; align-items:center; justify-content:space-between; gap:18px; position:relative; }
+.logo{ display:flex; align-items:center; gap:12px; flex-shrink:0; }
+.logo-slot{ width:48px; height:48px; border-radius:14px; background:linear-gradient(145deg, var(--green), var(--green-dark)); display:grid; place-items:center; font-weight:900; font-size:1.3rem; color:#04150a; box-shadow:0 8px 20px var(--green-glow); overflow:hidden; }
+.logo-slot img{ width:100%; height:100%; object-fit:cover; }
+.logo-txt{ display:flex; flex-direction:column; line-height:1.05; }
+.logo-txt strong{ font-size:1.06rem; letter-spacing:1.6px; font-weight:900; }
+.logo-txt small{ font-size:.62rem; letter-spacing:3.4px; color:var(--green); font-weight:700; text-transform:uppercase; }
+#menu-toggle{ display:none; }
+.burger{ display:none; font-size:1.6rem; color:var(--white); cursor:pointer; padding:6px 12px; border:1px solid var(--line); border-radius:10px; line-height:1; }
+.nav{ display:flex; align-items:center; gap:6px; }
+.nav a.nav-link{ font-size:.88rem; font-weight:600; color:#d7d7d7; padding:9px 13px; border-radius:10px; transition:color .2s, background .2s; }
+.nav a.nav-link:hover{ color:var(--green); background:var(--green-soft); }
+.nav .btn-dl{ margin-left:10px; background:var(--green); color:#04150a; padding:10px 18px; border-radius:999px; font-size:.83rem; font-weight:800; display:inline-flex; align-items:center; gap:7px; }
+
+.hero{ position:relative; padding:110px 0 100px; overflow:hidden; text-align:center; }
+.hero-badge{ display:inline-flex; align-items:center; gap:9px; font-size:.75rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--green); border:1px solid rgba(51,209,111,.3); background:var(--green-soft); padding:8px 18px; border-radius:999px; margin-bottom:26px; }
+.hero h1{ font-size:clamp(2.1rem, 6vw, 4rem); line-height:1.08; letter-spacing:-1.5px; font-weight:900; margin-bottom:22px; }
+.hero h1 span{ color:var(--green); }
+.hero p{ max-width:660px; margin:0 auto 38px; color:var(--muted); font-size:1.07rem; }
+.hero-actions{ display:flex; flex-wrap:wrap; gap:14px; justify-content:center; }
+.stats{ display:grid; grid-template-columns:repeat(auto-fit, minmax(150px,1fr)); gap:16px; margin-top:70px; padding-top:38px; border-top:1px solid var(--line); }
+.stat strong{ display:block; font-size:1.85rem; font-weight:900; color:var(--green); }
+.stat span{ font-size:.78rem; color:var(--muted); text-transform:uppercase; letter-spacing:.14em; }
+
+.grid{ display:grid; gap:26px; }
+.grid--3{ grid-template-columns:repeat(auto-fit, minmax(290px,1fr)); }
+.card{ background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:34px 28px; transition:all .3s ease; }
+.card:hover{ transform:translateY(-8px); border-color:var(--green); }
+.card-icon{ width:58px; height:58px; border-radius:16px; display:grid; place-items:center; font-size:1.6rem; background:var(--green-soft); margin-bottom:20px; }
+.card h3{ font-size:1.2rem; margin-bottom:6px; }
+.card .sub{ font-size:.76rem; text-transform:uppercase; color:var(--green); font-weight:700; margin-bottom:14px; }
+.card p{ color:var(--muted); font-size:.94rem; margin-bottom:18px; }
+.card ul.checks li{ color:#cfcfcf; font-size:.9rem; padding:6px 0 6px 26px; position:relative; }
+.card ul.checks li::before{ content:"✔"; position:absolute; left:0; color:var(--green); }
+
+.free-card, .premium-card{ background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:32px 26px; display:flex; flex-direction:column; position:relative; transition:all .3s ease; }
+.free-card:hover, .premium-card:hover{ transform:translateY(-8px); border-color:var(--green); }
+.badge-free, .badge-pro{ position:absolute; top:18px; right:18px; font-size:.66rem; font-weight:900; padding:6px 12px; border-radius:999px; background:var(--green); color:#04150a; }
+.badge-pro{ top:-14px; left:50%; transform:translateX(-50%); right:auto; }
+.free-card .emoji, .premium-card .emoji{ font-size:2.3rem; margin-bottom:16px; }
+.game-name{ font-size:.74rem; letter-spacing:.14em; text-transform:uppercase; color:var(--green); font-weight:700; margin-bottom:14px; }
+.price{ font-size:2.1rem; font-weight:900; margin-bottom:4px; }
+.premium-card ul.checks{ margin-bottom:26px; flex:1; }
+.premium-card ul.checks li{ color:#cfcfcf; font-size:.88rem; padding:7px 0 7px 26px; position:relative; border-bottom:1px dashed rgba(255,255,255,.05); }
+.premium-card ul.checks li::before{ content:"✔"; position:absolute; left:0; color:var(--green); }
+
+.agency-box{ background:var(--panel); border:1px solid var(--line); border-radius:24px; padding:52px 40px; }
+.course-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); gap:22px; margin-top:44px; }
+.course{ background:var(--black); border:1px solid var(--line); border-radius:16px; padding:26px 24px; }
+.course .num{ display:inline-grid; place-items:center; width:38px; height:38px; border-radius:11px; background:var(--green-soft); color:var(--green); font-weight:900; margin-bottom:16px; }
+
+.social-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(230px,1fr)); gap:20px; }
+.social-card{ display:flex; align-items:center; gap:16px; padding:22px 24px; border-radius:16px; background:var(--panel); border:1px solid var(--line); transition:all .25s; }
+.social-card:hover{ transform:translateY(-6px); border-color:var(--green); background:var(--green-soft); }
+.social-icon{ width:48px; height:48px; border-radius:13px; display:grid; place-items:center; font-size:1.35rem; background:var(--green-soft); }
+.social-card .info strong{ display:block; font-size:.95rem; }
+.social-card .info span{ font-size:.78rem; color:var(--muted); }
+
+.wa-box{ margin-top:56px; background:var(--panel); border:1px solid var(--green); border-radius:24px; padding:50px 40px; text-align:center; }
+.wa-box .wa-emoji{ font-size:3rem; margin-bottom:14px; display:block; }
+.wa-box h3{ font-size:2rem; margin-bottom:14px; }
+.wa-box h3 span{ color:var(--green); }
+.wa-box p{ color:var(--muted); max-width:620px; margin:0 auto 30px; }
+.wa-number{ display:block; margin-top:18px; font-size:.86rem; color:var(--green); font-weight:700; }
+
+.footer{ background:#060606; border-top:1px solid var(--line); padding:56px 0 28px; }
+.footer-grid{ display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:44px; margin-bottom:44px; }
+.footer h4{ font-size:.78rem; text-transform:uppercase; color:var(--green); margin-bottom:18px; }
+.footer ul li{ margin-bottom:10px; }
+.footer ul li a{ color:#b5b5b5; font-size:.89rem; }
+.footer-bottom{ border-top:1px solid var(--line); padding-top:24px; display:flex; justify-content:space-between; font-size:.8rem; color:#7a7a7a; }
+
+@media (max-width:860px){
+  .burger{ display:block; }
+  .nav{ position:absolute; top:100%; left:0; right:0; flex-direction:column; background:var(--dark); padding:0 18px; max-height:0; overflow:hidden; transition:all .4s ease; }
+  #menu-toggle:checked ~ .nav{ max-height:620px; padding:16px 18px 22px; }
+  .nav a.nav-link{ padding:13px 8px; border-bottom:1px solid var(--line); }
+  .footer-grid{ grid-template-columns:1fr; }
+}
+@media (max-width:600px){
+  .section{ padding:66px 0; }
+  .agency-box, .wa-box{ padding:36px 22px; }
+  .hero-actions .btn{ width:100%; }
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="nav-wrap">
+    <a href="#inicio" class="logo">
+      <div class="logo-slot">
+        <img src="logo.png" alt="Logo SAZA">
+      </div>
+      <div class="logo-txt"><strong>SAZA</strong><small>Truck Design</small></div>
+    </a>
+    <input type="checkbox" id="menu-toggle">
+    <label for="menu-toggle" class="burger">☰</label>
+    <nav class="nav">
+      <a class="nav-link" href="#servicios">Servicios</a>
+      <a class="nav-link" href="#gratis">Gratis</a>
+      <a class="nav-link" href="#premium">Premium</a>
+      <a class="nav-link" href="#cursos">Cursos</a>
+      <a class="nav-link" href="#contacto">Contacto</a>
+      <a class="btn-dl" href="#">⬇ Menú PDF</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="inicio">
+  <div class="container">
+    <span class="hero-badge">🚛 Skins · Guías · Cursos</span>
+    <h1>Diseñamos los camiones<br>que <span>tú imaginas</span></h1>
+    <p>SAZA TRUCK DESIGN es tu estudio de skins para <strong>Universal Truck Simulator</strong>, <strong>Big Rigs</strong> y <strong>Euro Truck Simulator 3</strong>. Descarga gratis, compra en Premium y aprende a crear tus propios diseños.</p>
+    <div class="hero-actions">
+      <a href="#gratis" class="btn btn--primary">⬇ Descargar skins gratis</a>
+      <a href="#premium" class="btn btn--ghost">⭐ Ver versión Premium</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><strong>+120</strong><span>Skins diseñadas</span></div>
+      <div class="stat"><strong>3</strong><span>Simuladores</span></div>
+      <div class="stat"><strong>100%</strong><span>Compatible</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt" id="servicios">
+  <div class="container">
+    <div class="sec-head">
+      <span class="tag">Servicios</span>
+      <h2>Lo que ofrecemos para <span>cada simulador</span></h2>
+    </div>
+    <div class="grid grid--3">
+      <article class="card">
+        <div class="card-icon">🚚</div>
+        <h3>Universal Truck Simulator</h3>
+        <p class="sub">Skins + Asesoría</p>
+        <p>Diseños ligeros y optimizados para móvil, con texturas de alta compatibilidad y acabados realistas.</p>
+        <ul class="checks"><li>Skins gratuitas listas para instalar</li><li>Packs Premium exclusivos</li><li>Soporte por WhatsApp</li></ul>
+      </article>
+      <article class="card">
+        <div class="card-icon">🛻</div>
+        <h3>Big Rigs</h3>
+        <p class="sub">Skins + Restauración</p>
+        <p>Revive el clásico con skins nostálgicas y modernas. Texturas de baja resolución con estilos llamativos.</p>
+        <ul class="checks"><li>Paquete gratuito de skins retro</li><li>Versiones Premium cromadas</li><li>Tutorial de reemplazo de texturas</li></ul>
+      </article>
+      <article class="card">
+        <div class="card-icon">🚛</div>
+        <h3>Euro Truck Simulator 3</h3>
+        <p class="sub">Skins + Branding</p>
+        <p>Diseños de nivel profesional para el simulador más exigente: alta resolución y detalles de flota.</p>
+        <ul class="checks"><li>Skins gratuitas de prueba</li><li>Packs Premium en 4K</li><li>Diseño de flota completa</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="gratis">
+  <div class="container">
+    <div class="sec-head">
+      <span class="tag">Gratis</span>
+      <h2>Descarga <span>ahora mismo</span></h2>
+    </div>
+    <div class="grid grid--3">
+      <article class="free-card">
+        <span class="badge-free">GRATIS</span>
+        <div class="emoji">🚚</div>
+        <h3>Pack Starter</h3>
+        <p class="game-name">Universal Truck Simulator</p>
+        <p>3 skins básicas con colores vivos y texturas optimizadas.</p>
+        <a class="btn btn--primary btn--block" href="#">⬇ Descargar gratis</a>
+      </article>
+      <article class="free-card">
+        <span class="badge-free">GRATIS</span>
+        <div class="emoji">🛻</div>
+        <h3>Pack Retro</h3>
+        <p class="game-name">Big Rigs</p>
+        <p>Tres diseños de estilo noventero con colores planos y alto contraste.</p>
+        <a class="btn btn--primary btn--block" href="#">⬇ Descargar gratis</a>
+      </article>
+      <article class="free-card">
+        <span class="badge-free">GRATIS</span>
+        <div class="emoji">🚛</div>
+        <h3>Pack Demo HD</h3>
+        <p class="game-name">Euro Truck Simulator 3</p>
+        <p>Una skin en alta resolución para comprobar la calidad de nuestro trabajo.</p>
+        <a class="btn btn--primary btn--block" href="#">⬇ Descargar gratis</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt" id="premium">
+  <div class="container">
+    <div class="sec-head">
+      <span class="tag">Premium</span>
+      <h2>Versiones <span>Pro</span> de cada skin</h2>
+    </div>
+    <div class="grid grid--3">
+      <article class="premium-card">
+        <div class="emoji">🚚</div>
+        <h3>Pack Pro</h3>
+        <p class="game-name">Universal Truck Simulator</p>
+        <div class="price">$4.99</div>
+        <ul class="checks"><li>10 skins exclusivas</li><li>Diseños personalizables</li><li>Actualizaciones gratis</li></ul>
+        <a class="btn btn--ghost btn--block" href="https://wa.me/573212834434?text=Hola%20SAZA%2C%20quiero%20el%20Pack%20Pro%20de%20Universal%20Truck%20Simulator" target="_blank">💬 Comprar por WhatsApp</a>
+      </article>
+      <article class="premium-card">
+        <span class="badge-pro">MÁS VENDIDO</span>
+        <div class="emoji">🛻</div>
+        <h3>Pack Legend</h3>
+        <p class="game-name">Big Rigs</p>
+        <div class="price">$6.99</div>
+        <ul class="checks"><li>15 skins retro + modernas</li><li>Logos cromados</li><li>Guía en video</li></ul>
+        <a class="btn btn--primary btn--block" href="https://wa.me/573212834434?text=Hola%20SAZA%2C%20quiero%20el%20Pack%20Legend%20de%20Big%20Rigs" target="_blank">💬 Comprar por WhatsApp</a>
+      </article>
+      <article class="premium-card">
+        <div class="emoji">🚛</div>
+        <h3>Pack Elite 4K</h3>
+        <p class="game-name">Euro Truck Simulator 3</p>
+        <div class="price">$9.99</div>
+        <ul class="checks"><li>8 skins en 4K</li><li>Mapas PBR realistas</li><li>Asesoría 1 a 1</li></ul>
+        <a class="btn btn--ghost btn--block" href="https://wa.me/573212834434?text=Hola%20SAZA%2C%20quiero%20el%20Pack%20Elite%204K%20de%20Euro%20Truck%20Simulator%203" target="_blank">💬 Comprar por WhatsApp</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="cursos">
+  <div class="container">
+    <div class="agency-box">
+      <span class="tag">SAZA Academy</span>
+      <h2>No solo vendemos: <span>te enseñamos a crearlas</span></h2>
+      <p>Cursos básicos donde aprendes desde cero a diseñar, empaquetar y promocionar tus propias skins. Sin experiencia previa, con plantillas descargables y acompañamiento por WhatsApp.</p>
+      <div class="course-grid">
+        <div class="course"><span class="num">01</span><h4>Diseño desde cero</h4><p>Texturas limpias, capas y acabados profesionales.</p></div>
+        <div class="course"><span class="num">02</span><h4>Instalación en UTS</h4><p>Dónde van los archivos y cómo evitar errores.</p></div>
+        <div class="course"><span class="num">03</span><h4>Texturas retro Big Rigs</h4><p>Colores planos definidos y diseños llamativos.</p></div>
+        <div class="course"><span class="num">04</span><h4>Calidad 4K en ETS3</h4><p>Mapas de normales y metalizados realistas.</p></div>
+        <div class="course"><span class="num">05</span><h4>Empaqueta y vende</h4><p>Comprime archivos y crea fichas de producto.</p></div>
+        <div class="course"><span class="num">06</span><h4>Marketing para mods</h4><p>Posicionamiento y contenido para redes.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt" id="contacto">
+  <div class="container">
+    <div class="sec-head">
+      <span class="tag">Contacto</span>
+      <h2>Síguenos y <span>escríbenos</span></h2>
+    </div>
+    <div class="social-grid">
+      <a class="social-card" href="https://www.facebook.com/profile.php?id=61594411497751" target="_blank">
+        <span class="social-icon">📘</span><span class="info"><strong>Facebook</strong><span>SAZA Truck Design</span></span>
+      </a>
+      <a class="social-card" href="https://www.tiktok.com/@sazatruck_design" target="_blank">
+        <span class="social-icon">🎵</span><span class="info"><strong>TikTok</strong><span>@sazatruck_design</span></span>
+      </a>
+      <a class="social-card" href="https://www.youtube.com/@sazatruckdesign" target="_blank">
+        <span class="social-icon">▶️</span><span class="info"><strong>YouTube</strong><span>SAZA Truck Design</span></span>
+      </a>
+      <a class="social-card" href="https://www.instagram.com/saza_digital" target="_blank">
+        <span class="social-icon">📸</span><span class="info"><strong>Instagram</strong><span>@saza_digital</span></span>
+      </a>
+    </div>
+    <div class="wa-box">
+      <span class="wa-emoji">💬</span>
+      <h3>Hablemos <span>directo por WhatsApp</span></h3>
+      <p>¿Quieres una skin personalizada, comprar un pack Premium o resolver una duda? Escríbenos y te respondemos al instante.</p>
+      <a class="btn btn--wa" style="padding:18px 42px; font-size:1rem;" href="https://wa.me/573212834434?text=Hola%20SAZA%20TRUCK%20DESIGN%2C%20quiero%20informaci%C3%B3n" target="_blank">💬 Abrir chat de WhatsApp</a>
+      <span class="wa-number">+57 321 283 4434</span>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>SAZA Truck Design</h4>
+        <p>Estudio de skins y contenido para simuladores de camiones. Diseñamos, enseñamos y llevamos tu flota virtual al siguiente nivel.</p>
+      </div>
+      <div>
+        <h4>Secciones</h4>
+        <ul>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#gratis">Skins gratis</a></li>
+          <li><a href="#premium">Premium</a></li>
+          <li><a href="#cursos">Cursos</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Redes</h4>
+        <ul>
+          <li><a href="https://www.facebook.com/profile.php?id=61594411497751" target="_blank">Facebook</a></li>
+          <li><a href="https://www.tiktok.com/@sazatruck_design" target="_blank">TikTok</a></li>
+          <li><a href="https://www.youtube.com/@sazatruckdesign" target="_blank">YouTube</a></li>
+          <li><a href="https://www.instagram.com/saza_digital" target="_blank">Instagram</a></li>
+          <li><a href="https://wa.me/573212834434" target="_blank">WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 <strong>SAZA TRUCK DESIGN</strong>. Todos los derechos reservados.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
